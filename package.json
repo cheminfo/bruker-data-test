@@ -1,0 +1,24 @@
+{
+  "name": "bruker-data-test",
+  "version": "0.0.1",
+  "description": "provides zipped bruker NMR data files for testing purposes",
+  "keywords": [
+    "magnetic resonance",
+    "nmr",
+    "bruker",
+    "dataset"
+  ],
+  "main": "index.js",
+  "files": [
+    "toc.json",
+    "data/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "author": "jobo322",
+  "license": "MIT",
+  "dependencies": {
+    "recursive-readdir-synchronous": "0.0.4"
+  }
+}
