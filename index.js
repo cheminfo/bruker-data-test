@@ -5,7 +5,7 @@ const toc = JSON.parse(readFileSync(join(__dirname, 'toc.json')));
 let bruker = {};
 for (let file of toc){
   let name = file.filename;
-  bruker[name] = readFileSync(join(__dirname, file.url)).toString();
+  bruker[name] = readFileSync(join(__dirname, file.url), 'base64').toString();
 }
 module.exports = {
   bruker,
