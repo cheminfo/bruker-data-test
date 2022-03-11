@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.2.1](https://www.github.com/cheminfo/bruker-data-test/compare/v0.2.0...v0.2.1) (2022-03-11)
+
+
+### Bug Fixes
+
+* update filelist-from ([dad284b](https://www.github.com/cheminfo/bruker-data-test/commit/dad284bb62367b1d57ca85d7b0a1ed4741a31c4e))
+
 ## [0.2.0](https://www.github.com/cheminfo/bruker-data-test/compare/v0.1.0...v0.2.0) (2022-02-26)
 
 
