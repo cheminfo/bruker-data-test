@@ -18,7 +18,7 @@ Provide FileList of bruker files zipped or unzipped
 ```js
 import { getZipped, getCoffee } from 'bruker-data-test';
 
-const zipped = getZipped();
+const zipped = await getZipped();
 const aspirin = zipped.filter((entry) => entry.name.includes('aspirin'))[0];
 const data = await aspirin.arrayBuffer();
 ```
