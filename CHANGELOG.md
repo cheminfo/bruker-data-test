@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.3.0](https://www.github.com/cheminfo/bruker-data-test/compare/v0.2.1...v0.3.0) (2022-09-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* export more specific function (#7)
+* use filelist-utils n add cache
+
+### Features
+
+* export more specific function ([#7](https://www.github.com/cheminfo/bruker-data-test/issues/7)) ([b2381d9](https://www.github.com/cheminfo/bruker-data-test/commit/b2381d92ab473bbff84cea6046022df39d7c6928))
+* use filelist-utils n add cache ([a2a49c4](https://www.github.com/cheminfo/bruker-data-test/commit/a2a49c41a8730677ba6118d039964495a7a70af7)), closes [#4](https://www.github.com/cheminfo/bruker-data-test/issues/4)
+
 ### [0.2.1](https://www.github.com/cheminfo/bruker-data-test/compare/v0.2.0...v0.2.1) (2022-03-11)
 
 
