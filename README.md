@@ -16,13 +16,24 @@ Provide FileList of bruker files zipped or unzipped
 ## Usage
 
 ```js
-import { getZipped, getCoffee } from 'bruker-data-test';
+import { getList, getFile, getZipped } from 'bruker-data-test';
 
-const zipped = await getZipped();
-const aspirin = zipped.filter((entry) => entry.name.includes('aspirin'))[0];
-const data = await aspirin.arrayBuffer();
+const listOfFilenames = await getList(); //list of zip file names
+
+const filename = 'aspirin-1h.zip';
+const zipped = getZipped();
+const aspirin = zipped.find((entry) => entry.name === filename);
+const buffer = await aspirin.arrayBuffer();
+//or
+const zipBuffer = await getData(filename);
+
 ```
 
+File list of a folder with two bruker samples
+```js
+import { getCoffee } from 'bruker-data-test';
+const fileList = await getCoffee();
+```
 ## License
 
 [MIT](./LICENSE)
