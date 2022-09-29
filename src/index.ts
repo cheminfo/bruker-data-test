@@ -1,10 +1,6 @@
 import { join } from 'path';
 
-import {
-  FileCollection,
-  fileCollectionFromPath,
-  FileCollectionItem,
-} from 'filelist-utils';
+import { fileCollectionFromPath, FileCollection } from 'filelist-utils';
 
 const root = join(__dirname, '../data');
 const PATH_TO_ZIPPED = join(root, 'zipped');
@@ -26,13 +22,13 @@ async function loadFileList(path: string) {
 }
 
 export async function getList() {
-  const files = (await loadFileList(PATH_TO_ZIPPED)).items;
-  return files.map((d: FileCollectionItem) => d.name);
+  const fileCollection = await loadFileList(PATH_TO_ZIPPED);
+  return fileCollection.files.map((d) => d.name);
 }
 
 export async function getFile(name: string) {
-  const fileList = (await loadFileList(PATH_TO_ZIPPED)).items;
-  const file = fileList.find((file) => file.name === name);
+  const fileCollection = await loadFileList(PATH_TO_ZIPPED);
+  const file = fileCollection.files.find((file) => file.name === name);
 
   if (!file) {
     throw new Error(`There is not a zip file for ${name}`);

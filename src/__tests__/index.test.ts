@@ -13,12 +13,12 @@ describe('bruker-data-test', () => {
     expect(file.name).toBe(filename);
   });
   it('getCoffee', async () => {
-    expect(await getCoffee()).toHaveLength(197);
+    expect((await getCoffee()).files).toHaveLength(197);
   });
   it('getZipped', async () => {
     const zipped = await getZipped();
-    expect(zipped).toHaveLength(6);
-    const aspirin = zipped.items.filter((entry) =>
+    expect(zipped.files).toHaveLength(6);
+    const aspirin = zipped.files.filter((entry) =>
       entry.name.includes('aspirin'),
     )[0];
     const data = await aspirin.arrayBuffer();
@@ -26,8 +26,8 @@ describe('bruker-data-test', () => {
   });
   it('getData', async () => {
     const buffer = await getData(filename);
-    const fileList = (await fileCollectionFromZip(buffer)).items;
-    expect(fileList).toHaveLength(18);
-    expect(fileList.map((f) => f.name)).toContain('acqus');
+    const fileCollection = await fileCollectionFromZip(buffer);
+    expect(fileCollection.files).toHaveLength(18);
+    expect(fileCollection.files.map((f) => f.name)).toContain('acqus');
   });
 });
