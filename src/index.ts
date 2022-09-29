@@ -8,7 +8,7 @@ const PATH_TO_COFFEE = join(root, 'flat/coffee');
 
 const cache: Record<string, FileCollection> = {};
 
-async function loadFileList(path: string) {
+async function loadFileCollection(path: string) {
   if (cache[path]) {
     return cache[path];
   }
@@ -22,12 +22,12 @@ async function loadFileList(path: string) {
 }
 
 export async function getList() {
-  const fileCollection = await loadFileList(PATH_TO_ZIPPED);
+  const fileCollection = await loadFileCollection(PATH_TO_ZIPPED);
   return fileCollection.files.map((d) => d.name);
 }
 
 export async function getFile(name: string) {
-  const fileCollection = await loadFileList(PATH_TO_ZIPPED);
+  const fileCollection = await loadFileCollection(PATH_TO_ZIPPED);
   const file = fileCollection.files.find((file) => file.name === name);
 
   if (!file) {
@@ -43,9 +43,9 @@ export async function getData(name: string) {
 }
 
 export function getZipped() {
-  return loadFileList(PATH_TO_ZIPPED);
+  return loadFileCollection(PATH_TO_ZIPPED);
 }
 
 export function getCoffee() {
-  return loadFileList(PATH_TO_COFFEE);
+  return loadFileCollection(PATH_TO_COFFEE);
 }
