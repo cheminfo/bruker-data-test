@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.4.0](https://www.github.com/cheminfo/bruker-data-test/compare/v0.3.0...v0.4.0) (2022-10-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* use FileCollection
+* update dependencies
+
+### Features
+
+* use FileCollection ([01fb6fb](https://www.github.com/cheminfo/bruker-data-test/commit/01fb6fb0651d8b326b8024f8329c62187969fc6a))
+
+
+### Miscellaneous Chores
+
+* update dependencies ([7404a31](https://www.github.com/cheminfo/bruker-data-test/commit/7404a317fcb3a1ecd335c0c3915d5cd3ff3fbd5b))
+
 ## [0.3.0](https://www.github.com/cheminfo/bruker-data-test/compare/v0.2.1...v0.3.0) (2022-09-06)
 
 
