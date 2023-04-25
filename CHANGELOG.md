@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/cheminfo/bruker-data-test/compare/v0.4.0...v0.5.0) (2023-04-25)
+
+
+### Features
+
+* update filelist-utils to allow filter ([507435c](https://github.com/cheminfo/bruker-data-test/commit/507435c9b9f09d9bd7174bdc344d1d7baaadc813))
+
 ## [0.4.0](https://www.github.com/cheminfo/bruker-data-test/compare/v0.3.0...v0.4.0) (2022-10-03)
 
 
