@@ -19,7 +19,7 @@ describe('bruker-data-test', () => {
     const zipped = await getZipped();
     expect(zipped.files).toHaveLength(7);
     const aspirin = zipped.files.filter((entry) =>
-      entry.name.includes('aspirin'),
+      entry.name.includes('aspirin-1h.'),
     )[0];
     const data = await aspirin.arrayBuffer();
     expect(data).toHaveLength(59987);
