@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.1](https://github.com/cheminfo/bruker-data-test/compare/v0.5.0...v0.5.1) (2023-08-09)
+
+
+### Bug Fixes
+
+* add aspirin processed data ([#12](https://github.com/cheminfo/bruker-data-test/issues/12)) ([03024e8](https://github.com/cheminfo/bruker-data-test/commit/03024e8efad8531087a8ae77d3704171152881b6))
+
 ## [0.5.0](https://github.com/cheminfo/bruker-data-test/compare/v0.4.0...v0.5.0) (2023-04-25)
 
 
