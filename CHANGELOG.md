@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.2](https://github.com/cheminfo/bruker-data-test/compare/v0.5.1...v0.5.2) (2024-01-18)
+
+
+### Bug Fixes
+
+* add inversion recovery pseudo 2D sample ([45415f3](https://github.com/cheminfo/bruker-data-test/commit/45415f3fdd8d7af7fc350675e7413c5875cc954a))
+
 ## [0.5.1](https://github.com/cheminfo/bruker-data-test/compare/v0.5.0...v0.5.1) (2023-08-09)
 
 
