@@ -17,7 +17,7 @@ describe('bruker-data-test', () => {
   });
   it('getZipped', async () => {
     const zipped = await getZipped();
-    expect(zipped.files).toHaveLength(7);
+    expect(zipped.files).toHaveLength(8);
     const aspirin = zipped.files.filter((entry) =>
       entry.name.includes('aspirin-1h.'),
     )[0];
