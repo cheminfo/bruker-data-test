@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.3](https://github.com/cheminfo/bruker-data-test/compare/v0.5.2...v0.5.3) (2024-01-26)
+
+
+### Bug Fixes
+
+* add nus 2d data ([#15](https://github.com/cheminfo/bruker-data-test/issues/15)) ([33f245d](https://github.com/cheminfo/bruker-data-test/commit/33f245d1fb9fb10cbf1083cb16d7d0c813f3d8d9))
+
 ## [0.5.2](https://github.com/cheminfo/bruker-data-test/compare/v0.5.1...v0.5.2) (2024-01-18)
 
 
