@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.4](https://github.com/cheminfo/bruker-data-test/compare/v0.5.3...v0.5.4) (2024-04-08)
+
+
+### Bug Fixes
+
+* add FID with not power of two length ([ef5ed6f](https://github.com/cheminfo/bruker-data-test/commit/ef5ed6f3df44bc37b9f4c14eedf7b12acdeca431))
+
 ## [0.5.3](https://github.com/cheminfo/bruker-data-test/compare/v0.5.2...v0.5.3) (2024-01-26)
 
 
