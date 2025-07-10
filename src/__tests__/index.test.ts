@@ -1,3 +1,5 @@
+import assert from 'node:assert';
+
 import { fileCollectionFromZip } from 'filelist-utils';
 
 import { getCoffee, getData, getFile, getList, getZipped } from '..';
@@ -17,10 +19,13 @@ describe('bruker-data-test', () => {
   });
   it('getZipped', async () => {
     const zipped = await getZipped();
-    expect(zipped.files).toHaveLength(11);
-    const aspirin = zipped.files.filter((entry) =>
-      entry.name.includes('aspirin-1h.'),
-    )[0];
+    expect(zipped.files).toHaveLength(12);
+
+    const aspirin = zipped.files.find((entry) =>
+      entry.name.includes('aspirin-1h.zip'),
+    );
+    assert(aspirin);
+
     const data = await aspirin.arrayBuffer();
     expect(data).toHaveLength(59987);
   });
