@@ -26,14 +26,15 @@ const aspirin = zipped.find((entry) => entry.name === filename);
 const buffer = await aspirin.arrayBuffer();
 //or
 const zipBuffer = await getData(filename);
-
 ```
 
 File list of a folder with two bruker samples
+
 ```js
 import { getCoffee } from 'bruker-data-test';
 const fileList = await getCoffee();
 ```
+
 ## License
 
 [MIT](./LICENSE)

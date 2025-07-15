@@ -1,38 +1,68 @@
-import assert from 'node:assert';
+import { describe, expect, it } from 'vitest';
 
-import { fileCollectionFromZip } from 'filelist-utils';
-
-import { getCoffee, getData, getFile, getList, getZipped } from '..';
+import {
+  coffeeDirectory,
+  zippedFiles,
+  zippedFilesAsyncEntries,
+  zippedFilesEntries,
+} from '../index.ts';
 
 describe('bruker-data-test', () => {
   const filename = 'aspirin-1h.zip';
-  it('getList', async () => {
-    const list = await getList();
-    expect(list).toContain(filename);
-  });
-  it('check getFile', async () => {
-    const file = await getFile(filename);
-    expect(file.name).toBe(filename);
-  });
-  it('getCoffee', async () => {
-    expect((await getCoffee()).files).toHaveLength(197);
-  });
-  it('getZipped', async () => {
-    const zipped = await getZipped();
-    expect(zipped.files).toHaveLength(12);
 
-    const aspirin = zipped.files.find((entry) =>
-      entry.name.includes('aspirin-1h.zip'),
-    );
-    assert(aspirin);
+  it('zippedFilesAsyncEntries', async () => {
+    const relativePaths: string[] = [];
 
-    const data = await aspirin.arrayBuffer();
-    expect(data).toHaveLength(59987);
+    for await (const file of zippedFilesAsyncEntries()) {
+      relativePaths.push(file.relativePath);
+    }
+
+    expect(relativePaths).toContain(filename);
+    expect(relativePaths).toHaveLength(12);
   });
-  it('getData', async () => {
-    const buffer = await getData(filename);
-    const fileCollection = await fileCollectionFromZip(buffer);
-    expect(fileCollection.files).toHaveLength(18);
-    expect(fileCollection.files.map((f) => f.name)).toContain('acqus');
+
+  const nodeMajorVersion = Number.parseInt(
+    process.versions.node.split('.')[0] ?? '0',
+    10,
+  );
+
+  it.runIf(nodeMajorVersion >= 22)('zippedFilesEntries', async () => {
+    const files = await zippedFilesEntries();
+    const cyclosporinFiles = files
+      .map((file) => file.name)
+      .filter((name) => name.includes('cyclosporin'))
+      .toArray()
+      .sort();
+
+    expect(cyclosporinFiles).toStrictEqual([
+      'cyclosporin_1h.zip',
+      'cyclosporin_cosy.zip',
+      'cyclosporin_hmbc.zip',
+      'cyclosporin_hsqc.zip',
+    ]);
+  });
+
+  it('zippedFiles should contain aspirin-1h.zip', async () => {
+    const files = await zippedFiles();
+    const aspirinFile = files.find((file) => file.name === filename);
+
+    expect(aspirinFile).toBeDefined();
+    await expect(aspirinFile?.buffer()).resolves.toHaveLength(59987);
+
+    const buffers: Buffer[] = [];
+    for await (const buffer of aspirinFile?.stream() ?? []) {
+      buffers.push(buffer);
+    }
+
+    const sumSize = buffers.reduce((sum, buf) => sum + buf.length, 0);
+
+    expect(sumSize).toBe(59987);
+  });
+
+  it('coffeeDirectory', () => {
+    const path = coffeeDirectory();
+
+    expect(path).toBeDefined();
+    expect(path).toContain('data/flat/coffee');
   });
 });
