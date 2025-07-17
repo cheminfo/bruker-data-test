@@ -9,70 +9,44 @@
 
 `$ npm i bruker-data-test`
 
-Provide an array of bruker files zipped or path of root folder with bruker uncompressed files.
+Provide `zipped` and `coffee` `DataTestApi` instance (from `data-test-api` package).
+
+See https://github.com/cheminfo/data-test-api
 
 ## Usage
 
 ```js
-import { createReadStream } from 'node:fs';
-import { readFile } from 'node:fs/promises';
-import { zippedFiles } from 'bruker-data-test';
+import { zipped } from 'bruker-data-test';
 
-const files = await zippedFiles(); // list of zip file names
+const files = await zipped.files(); // list of zip file names
 
-const filename = 'aspirin-1h.zip';
-const aspirin = zipped.find((entry) => entry.name === filename);
+const name = 'aspirin-1h.zip';
+const aspirin = zipped.find((entry) => entry.name === name);
+//or
+const aspirin = await zipped.findFile(name); // get a file by name
 
 // Get the file buffer
 const buffer = await aspirin.buffer();
-// is a shortcut of
-const buffer = await readFile(aspirin.path);
+// or
+const buffer = await zipped.findData(name);
 
 // get the file as a Stream
 const stream = aspirin.stream();
-// is a shortcut of
-const stream = createReadStream(aspirin.path);
-```
 
-Other methods available for zipped files:
-
-Async Generator, Useful for async iteration:
-
-```typescript
-import { zippedFilesAsyncEntries, zippedFilesEntries } from 'bruker-data-test';
-
-for await (const entry of zippedFilesAsyncEntries()) {
-  // do something with entry
-}
-```
-
-Promise Generator, Useful to use with Iterators Helpers if available:
-
-```typescript
-import { cp, mkdir } from 'node:fs/promises';
-import { join } from 'node:path';
-import { zippedFilesEntries } from 'bruker-data-test';
-import { basename } from 'pathe';
-
-const entries = await zippedFilesEntries();
-
-const copyEntries = entries
-  .filter((f) => f.name.startsWith('cyclosporin'))
-  .map((f) => [f.path, join(process.cwd(), f.relativePath)])
-  .map(([source, destination]) =>
-    mkdir(basename(destination), { recursive: true }).then(() =>
-      cp(source, destination),
-    ),
-  );
-await Promise.allSettled(copyEntries);
+// get buffer for cyclosporin_1h.zip
+const cyclosporin1hBuffer = await zipped.getData(
+  'cyclosporin/cyclosporin_1h.zip',
+);
 ```
 
 Get the root path of uncompressed bruker experiments files
 
 ```js
-import { coffeeDirectory } from 'bruker-data-test';
+import { coffee } from 'bruker-data-test';
+import { FileCollection } from 'file-collection';
 
-const root = coffeeDirectory();
+const cofeeRoot = coffee.root;
+const fileCollection = await FileCollection.fromPath(cofeeRoot);
 ```
 
 ## Data Files Structure

@@ -1,19 +1,14 @@
-import { describe, expect, it } from 'vitest';
+import { assert, describe, expect, it } from 'vitest';
 
-import {
-  coffeeDirectory,
-  zippedFiles,
-  zippedFilesAsyncEntries,
-  zippedFilesEntries,
-} from '../index.ts';
+import { coffee, zipped } from '../index.ts';
 
-describe('bruker-data-test', () => {
+describe('bruker-data-test zipped', () => {
   const filename = 'aspirin-1h.zip';
 
-  it('zippedFilesAsyncEntries', async () => {
+  it('filesAsyncValues', async () => {
     const relativePaths: string[] = [];
 
-    for await (const file of zippedFilesAsyncEntries()) {
+    for await (const file of zipped.filesAsyncValues()) {
       relativePaths.push(file.relativePath);
     }
 
@@ -26,8 +21,8 @@ describe('bruker-data-test', () => {
     10,
   );
 
-  it.runIf(nodeMajorVersion >= 22)('zippedFilesEntries', async () => {
-    const files = await zippedFilesEntries();
+  it.runIf(nodeMajorVersion >= 22)('filesValues cyclosporin', async () => {
+    const files = await zipped.filesValues();
     const cyclosporinFiles = files
       .map((file) => file.name)
       .filter((name) => name.includes('cyclosporin'))
@@ -42,15 +37,16 @@ describe('bruker-data-test', () => {
     ]);
   });
 
-  it('zippedFiles should contain aspirin-1h.zip', async () => {
-    const files = await zippedFiles();
+  it('zipped files should contain aspirin-1h.zip', async () => {
+    const files = await zipped.files();
     const aspirinFile = files.find((file) => file.name === filename);
 
-    expect(aspirinFile).toBeDefined();
-    await expect(aspirinFile?.buffer()).resolves.toHaveLength(59987);
+    assert(aspirinFile);
+
+    await expect(aspirinFile.buffer()).resolves.toHaveLength(59987);
 
     const buffers: Buffer[] = [];
-    for await (const buffer of aspirinFile?.stream() ?? []) {
+    for await (const buffer of aspirinFile.stream()) {
       buffers.push(buffer);
     }
 
@@ -59,10 +55,10 @@ describe('bruker-data-test', () => {
     expect(sumSize).toBe(59987);
   });
 
-  it('coffeeDirectory', () => {
-    const path = coffeeDirectory();
+  it('coffee root', () => {
+    const path = coffee.root;
 
     expect(path).toBeDefined();
-    expect(path).toContain('data/flat/coffee');
+    expect(path).toMatch(/\/data\/flat\/coffee$/);
   });
 });
