@@ -33,11 +33,13 @@
     "url": "https://github.com/cheminfo/bruker-data-test/issues"
   },
   "homepage": "https://github.com/cheminfo/bruker-data-test#readme",
+  "dependencies": {
+    "data-test-api": "^1.0.1"
+  },
   "devDependencies": {
     "@types/node": "^24.0.14",
     "@vitest/coverage-v8": "^3.2.4",
     "@zakodium/tsconfig": "^1.0.2",
-    "data-test-api": "^1.0.1",
     "eslint": "^9.31.0",
     "eslint-config-cheminfo-typescript": "^19.0.0",
     "prettier": "^3.6.2",
