@@ -1,51 +1,15 @@
-import { join } from 'path';
+import { join } from 'node:path';
 
-import { fileCollectionFromPath, FileCollection } from 'filelist-utils';
+import type { AbsolutePath } from 'data-test-api';
+import init from 'data-test-api';
 
-const root = join(__dirname, '../data');
-const PATH_TO_ZIPPED = join(root, 'zipped');
-const PATH_TO_COFFEE = join(root, 'flat/coffee');
+const root = join(import.meta.dirname, '../data');
+const PATH_TO_ZIPPED = join(root, 'zipped') as AbsolutePath;
+const PATH_TO_COFFEE = join(root, 'flat/coffee') as AbsolutePath;
 
-const cache: Record<string, FileCollection> = {};
+export const zipped = init(
+  PATH_TO_ZIPPED,
+  (file) => file.isFile() && file.name.endsWith('.zip'),
+);
 
-async function loadFileCollection(path: string) {
-  if (cache[path]) {
-    return cache[path];
-  }
-
-  cache[path] = await fileCollectionFromPath(path, {
-    unzip: { zipExtensions: [] },
-    ungzip: { gzipExtensions: [] },
-  });
-
-  return cache[path];
-}
-
-export async function getList() {
-  const fileCollection = await loadFileCollection(PATH_TO_ZIPPED);
-  return fileCollection.files.map((d) => d.name);
-}
-
-export async function getFile(name: string) {
-  const fileCollection = await loadFileCollection(PATH_TO_ZIPPED);
-  const file = fileCollection.files.find((file) => file.name === name);
-
-  if (!file) {
-    throw new Error(`There is not a zip file for ${name}`);
-  }
-
-  return file;
-}
-
-export async function getData(name: string) {
-  const file = await getFile(name);
-  return file.arrayBuffer();
-}
-
-export function getZipped() {
-  return loadFileCollection(PATH_TO_ZIPPED);
-}
-
-export function getCoffee() {
-  return loadFileCollection(PATH_TO_COFFEE);
-}
+export const coffee = init(PATH_TO_COFFEE);
