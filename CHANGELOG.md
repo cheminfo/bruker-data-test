@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.0](https://github.com/cheminfo/bruker-data-test/compare/v0.5.4...v1.0.0) (2025-07-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* esm-only and exports only `zipped` and `coffee`, instance of `DataTestApi` from `data-test-api` package
+
+### Code Refactoring
+
+* switch to esm-only ([#18](https://github.com/cheminfo/bruker-data-test/issues/18)) ([f0e3114](https://github.com/cheminfo/bruker-data-test/commit/f0e3114bc9c154aa94ee3e0732de5ba1889b9ea1))
+
 ## [0.5.4](https://github.com/cheminfo/bruker-data-test/compare/v0.5.3...v0.5.4) (2024-04-08)
 
 
