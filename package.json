@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Provides bruker NMR data files for testing purposes",
   "type": "module",
-  "exports": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js"
+  },
   "keywords": [],
   "author": "Luc Patiny",
   "license": "MIT",
