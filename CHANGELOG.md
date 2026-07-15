@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0](https://github.com/cheminfo/bruker-data-test/compare/v1.0.0...v1.1.0) (2026-07-15)
+
+
+### Features
+
+* add example of hsqc incompleted acquisition ([#20](https://github.com/cheminfo/bruker-data-test/issues/20)) ([72c2b82](https://github.com/cheminfo/bruker-data-test/commit/72c2b82991ff08e504c4378ff99f6b194e4d2ba8))
+* add ibuprofen ([69049ca](https://github.com/cheminfo/bruker-data-test/commit/69049ca322cc294e3100c32d31f408da295b8dd9))
+
 ## [1.0.0](https://github.com/cheminfo/bruker-data-test/compare/v0.5.4...v1.0.0) (2025-07-18)
 
 
