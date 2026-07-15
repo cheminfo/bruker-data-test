@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/cheminfo/bruker-data-test/compare/v1.1.0...v1.1.1) (2026-07-15)
+
+
+### Bug Fixes
+
+* correct folder name ([63eaeab](https://github.com/cheminfo/bruker-data-test/commit/63eaeab4d5773f63fc63c3efc22185baddb44c23))
+
 ## [1.1.0](https://github.com/cheminfo/bruker-data-test/compare/v1.0.0...v1.1.0) (2026-07-15)
 
 

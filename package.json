@@ -1,6 +1,6 @@
 {
   "name": "bruker-data-test",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Provides bruker NMR data files for testing purposes",
   "type": "module",
   "exports": {
