@@ -13,7 +13,7 @@ describe('bruker-data-test zipped', () => {
     }
 
     expect(relativePaths).toContain(filename);
-    expect(relativePaths).toHaveLength(13);
+    expect(relativePaths).toHaveLength(23);
   });
 
   const nodeMajorVersion = Number.parseInt(
