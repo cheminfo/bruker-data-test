@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/cheminfo/bruker-data-test/compare/v1.1.1...v1.2.0) (2026-09-10)
+
+
+### Features
+
+* add new topspin file format as well as spectrum of Rb87 ([c4108f9](https://github.com/cheminfo/bruker-data-test/commit/c4108f927e8135d059d1ce8928fcd4c938b3caa3))
+
 ## [1.1.1](https://github.com/cheminfo/bruker-data-test/compare/v1.1.0...v1.1.1) (2026-07-15)
 
 
