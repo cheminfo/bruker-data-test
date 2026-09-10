@@ -13,15 +13,10 @@ describe('bruker-data-test zipped', () => {
     }
 
     expect(relativePaths).toContain(filename);
-    expect(relativePaths).toHaveLength(23);
+    expect(relativePaths).toHaveLength(26);
   });
 
-  const nodeMajorVersion = Number.parseInt(
-    process.versions.node.split('.')[0] ?? '0',
-    10,
-  );
-
-  it.runIf(nodeMajorVersion >= 22)('filesValues cyclosporin', async () => {
+  it('filesValues cyclosporin', async () => {
     const files = await zipped.filesValues();
     const cyclosporinFiles = files
       .map((file) => file.name)
